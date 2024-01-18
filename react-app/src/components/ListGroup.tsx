@@ -20,8 +20,7 @@ function ListGroup() {
               selectedIndex === index
                 ? "list-group-item active"
                 : "list-group-item"
-            } 
-            
+            }
             key={item}
             onClick={handle}
           >
