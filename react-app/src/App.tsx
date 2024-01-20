@@ -1,6 +1,8 @@
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
+import "bootstrap/dist/css/bootstrap.css";
+import { FaCalendarAlt } from "react-icons/fa";
 
 function App() {
   let items = ["New York", "London", "San Fransisco", "Paris"];
@@ -10,6 +12,7 @@ function App() {
 
   return (
     <div>
+      <FaCalendarAlt color="Red" size={40} />
       <ListGroup
         items={items}
         heading="Cities"
