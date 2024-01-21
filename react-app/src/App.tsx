@@ -1,5 +1,6 @@
 import Alert from "./components/Alert";
 import Button from "./components/Button";
+import Like from "./components/Like";
 import ListGroup from "./components/ListGroup";
 import "bootstrap/dist/css/bootstrap.css";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -22,6 +23,7 @@ function App() {
       <Button color="danger" onClick={() => console.log("Clicked")}>
         My Button
       </Button>
+      <Like onClick={() => console.log("Clicked")} />
     </div>
   );
 }
