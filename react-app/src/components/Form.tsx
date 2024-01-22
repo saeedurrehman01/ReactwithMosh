@@ -1,8 +1,17 @@
 import React, { FormEvent, useRef, useState } from "react";
-import { FieldValues, useForm, FormState } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
+
+interface FormData {
+  name: string,
+  age: number
+}
 
 const Form = () => {
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
   //   console.log(register);
 
   //   const nameRef = useRef<HTMLInputElement>(null);
@@ -34,8 +43,13 @@ const Form = () => {
           id="name"
           type="text"
           className="form-control"
-              />
-              {errors.name?.type==='required' && <p>The name field is required</p>}
+        />
+        {errors.name?.type === "required" && (
+          <p className="text-danger">The name field is required</p>
+        )}
+        {errors.name?.type === "minLength" && (
+          <p className="text-danger">The name must be atleast 3 characters</p>
+        )}
 
         {/* <input ref={nameRef} id="name" type="text" className="form-control" /> */}
       </div>
@@ -44,11 +58,13 @@ const Form = () => {
           Age
         </label>
         <input
-          {...register("age")}
+          {...register("age", { required: true, min: 18 })}
           id="age"
           type="number"
           className="form-control"
         />
+        {errors.age?.type === "required" && <p>The age field is required</p>}
+        {errors.age?.type === "min" && <p>The minimum age must be 18</p>}
 
         {/* <input ref={ageRef} id="age" type="number" className="form-control" /> */}
       </div>
