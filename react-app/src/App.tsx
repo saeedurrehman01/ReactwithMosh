@@ -1,23 +1,50 @@
-import React, { useEffect, useState } from "react";
-import ProductList from "./components/ProductList";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+
+import { useState } from "react";
+
+// interface User {
+//   id: number;
+//   name: string;
+// }
+
+// function App() {
+//   const [users, setUsers] = useState<User[]>([]);
+
+//   useEffect(() => {
+//     axios
+//       .get<User[]>("https://jsonplaceholder.typicode.com/users")
+//       .then((res) => setUsers(res.data));
+//   }, []);
+
+//   return (
+//     <ul>
+//       {users.map((user) => (
+//         <li key={user.id}>{user.name}</li>
+//       ))}
+//     </ul>
+//   );
+// }
+
+// export default App;
 
 function App() {
-  
-  const [category, setCategory] = useState("");
-  document.title = "My App";
+  const [count, setCount] = useState(0);
+
+  function decCount() {
+    setCount(prevCount => prevCount - 1);
+  }
+
+  function incCount() {
+    setCount(prevCount => prevCount + 1);
+  }
 
   return (
-    <div>
-      <select
-        className="form-select"
-        onChange={(event) => setCategory(event.target.value)}
-      >
-        <option value=""></option>
-        <option value="Clothing">Clothing</option>
-        <option value="Household">Household</option>
-      </select>
-      <ProductList category={category} />
-    </div>
+    <>
+      <button onClick={decCount}>-</button>
+      <span>{count}</span>
+      <button onClick={incCount}>+</button>
+    </>
   );
 }
 
