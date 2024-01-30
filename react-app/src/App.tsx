@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import ProductList from "./components/ProductList";
 
 function App() {
+  
   const [category, setCategory] = useState("");
+  document.title = "My App";
 
   return (
     <div>
